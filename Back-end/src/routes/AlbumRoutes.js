@@ -8,6 +8,6 @@ router.get("/api", (req,res) => {
     res.send("servidor funcionando")
 })
 
-router.get("/home", AlbumController.showAlbums)
+router.get("/albums", AlbumController.showAlbums)
 
 export default router;
