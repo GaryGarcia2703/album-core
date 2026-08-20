@@ -4,7 +4,7 @@ const API_URL = "http://localhost:3000/api/"
 
 async function GetAlbums() {
     try {
-        const res = await axios.get(`${API_URL/albums}`)
+        const res = await axios.get(`${API_URL}albums`)
         return res.data
     } catch (error) {
         console.log(error)

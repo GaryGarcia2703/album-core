@@ -1,4 +1,5 @@
 "use client";
+import { Link } from "react-router-dom";
 import GetAlbums from "../api/GetAlbums";
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from "flowbite-react";
 import { use, useEffect, useState } from "react";
@@ -11,46 +12,40 @@ export function Menusidebar() {
   useEffect(() => {
     async function cargarlbums() {
       try {
-      const data = await GetAlbums()
-      console.log(data)
-      setAlbums(data)
+        const data = await GetAlbums()
+        console.log(data)
+        setAlbums(data)
 
       } catch (error) {
         error
       }
     }
-    
+
     //llamada de la funcion
-    cargarlbums
+    cargarlbums()
   }, [])
 
 
 
   return (
+
+
     <Sidebar className="w-60" aria-label="Default sidebar example">
       <SidebarItems>
         <SidebarItemGroup className="space-y-10">
-          <SidebarItem href="#" icon={HiChartPie}>
-            Dashboard
-          </SidebarItem>
-          <SidebarItem href="#" icon={HiViewBoards} label="Pro" labelColor="dark">
-            {Albums.name}
-          </SidebarItem>
-          <SidebarItem href="#" icon={HiInbox} label="3">
-            Inbox
-          </SidebarItem>
-          <SidebarItem href="#" icon={HiUser}>
-            Users
-          </SidebarItem>
-          <SidebarItem href="#" icon={HiShoppingBag}>
-            Products
-          </SidebarItem>
-          <SidebarItem href="#" icon={HiArrowSmRight}>
-            Sign In
-          </SidebarItem>
-          <SidebarItem href="#" icon={HiTable}>
-            Sign Up
-          </SidebarItem>
+
+          {Albums.map((album) => (
+            <SidebarItem
+              key={album.id}
+              as={Link}
+              to={`/album/${album.id}`}
+              icon={HiTable}
+            >
+              {album.name}
+              <p className="text-xs">{album.artist}</p>
+            </SidebarItem>
+          ))}
+
         </SidebarItemGroup>
       </SidebarItems>
     </Sidebar>

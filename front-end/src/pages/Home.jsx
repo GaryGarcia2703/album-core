@@ -3,11 +3,12 @@ import Menusidebar from "../components/Menusidebar";
 
 
 function Home() {
-  
-return (
-  <Menusidebar/>
-)
-  
+  return (
+    <div>
+      <Menusidebar/>
+    </div>
+    
+  )
 }
 
 export default Home;
