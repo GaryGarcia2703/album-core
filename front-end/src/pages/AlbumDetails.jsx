@@ -2,6 +2,7 @@ import GetAlbumDetails from "../api/GetAlbumDetails";
 import { Card } from "flowbite-react";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Menusidebar from "../components/Menusidebar";
 
 function AlbumDetails() {
   const { id } = useParams();
@@ -13,15 +14,18 @@ function AlbumDetails() {
       .catch((error) => console.error(error));
   }, [id]); // ✅ evita loop infinito, y recarga si cambia el id
 
-  if (!album) {
-    return <p>Cargando información del álbum...</p>; // ✅ evita el crash inicial
+  if (!album) { // rendericacion condicional
+    return <p>Cargando información del álbum...</p>; // evita el crash inicial
   }
 
   return (
-    <div>
+    <div className="flex flex-row">
+
+      <Menusidebar/>
+      
       <Card
         className="max-w-sm"
-        imgAlt="Meaningful alt text for an image that is not purely decorative"
+        imgAlt=""
         imgSrc="/images/blog/image-1.jpg"
       >
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -32,6 +36,7 @@ function AlbumDetails() {
         </p>
         <p>{album.artist}</p>
       </Card>
+  
     </div>
   );
 }

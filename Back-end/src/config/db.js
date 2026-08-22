@@ -13,15 +13,4 @@ export const sequelize = new Sequelize(
   }
 );
 
-(async () => {
-    try {
-        await sequelize.authenticate();
-        console.log("DB conectada!!!");
-
-        await sequelize.sync();
-        console.log("Tablas sincronizadas.");
-    } catch (error) {
-        console.error("Error al conectar:", error);
-    }
-})()
 

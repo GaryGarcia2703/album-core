@@ -10,18 +10,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/home' element={<Home />}>
+        <Route path='/' element={<Home />}>
         </Route>
         
         <Route path='/album/:id' element={<AlbumDetails />}>
 
         </Route>
       </Routes>
-
-      { /*crear una pagina solamente para esto mas tarde */}
-      <nav>
-        <Link to="/home">Home</Link> |{" "}
-      </nav>
     </>
   )
 }
