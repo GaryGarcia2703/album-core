@@ -11,6 +11,7 @@ router.get("/api", (req,res) => {
 
 router.get("/albums", AlbumController.showAlbums)
 
+
 router.get("/albums/:id", AlbumController.albumInfo)
 
 export default router;

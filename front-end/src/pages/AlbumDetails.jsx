@@ -3,6 +3,7 @@ import { Card } from "flowbite-react";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Menusidebar from "../components/Menusidebar";
+import TracksSection from "../components/TracksSection";
 
 function AlbumDetails() {
   const { id } = useParams();
@@ -19,23 +20,27 @@ function AlbumDetails() {
   }
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row gap-1">
 
       <Menusidebar/>
       
-      <Card
-        className="max-w-sm"
-        imgAlt=""
-        imgSrc="/images/blog/image-1.jpg"
-      >
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {album.name}
-        </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">
-          {album.year}
-        </p>
-        <p>{album.artist}</p>
-      </Card>
+      <section id="album-plus-tracks-section" className="flex flex-col w-100 gap-1">
+        <Card
+          className=" w-full"
+          imgAlt=""
+          imgSrc="/images/blog/image-1.jpg"
+        >
+          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {album.name}
+          </h5>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            {album.year}
+          </p>
+          <p>{album.artist}</p>
+        </Card>
+
+        <TracksSection/>
+      </section>
   
     </div>
   );

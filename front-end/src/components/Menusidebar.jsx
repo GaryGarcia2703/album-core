@@ -30,7 +30,7 @@ export function Menusidebar() {
   return (
 
 
-    <Sidebar className="w-60" aria-label="Default sidebar example">
+    <Sidebar className="w-120" aria-label="Default sidebar example">
       <SidebarItems>
         <SidebarItemGroup className="space-y-10">
 

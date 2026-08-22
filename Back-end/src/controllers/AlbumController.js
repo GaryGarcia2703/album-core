@@ -1,4 +1,6 @@
 import { Album } from "../models/Album.js";
+import { Tracks } from "../models/Tracks.js";
+
 
 export class AlbumController {
     static showAlbums = async (req, res) => {
@@ -7,7 +9,7 @@ export class AlbumController {
         
             return res.status(200).json(albums)
         } catch (error) {
-            return res.status(500).json({ error: error.mesage })
+            return res.status(500).json({ error: error.message })
         } 
     };
 
@@ -17,6 +19,12 @@ export class AlbumController {
             const album = await Album.findOne({
                 where: {
                     id: albumId
+                }, 
+
+                // adicione el include para buscar la relacion con la tabla "tracks", osea, ya trae todo de una vez
+                include: {
+                    model: Tracks,
+                    as: "tracks",
                 }
             })
             
@@ -26,7 +34,7 @@ export class AlbumController {
 
             return res.status(200).json(album)
         } catch (error) {
-            return res.status(500).json({ error: error.mesage })
+            return res.status(500).json({ error: error.message })
         }
     }
 }
