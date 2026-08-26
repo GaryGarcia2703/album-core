@@ -18,9 +18,9 @@ function GetHour() {
 
 function Saludo() {
         return (
-            <span>
+            <p className="text-white text-2xl text-left ml-10 font-bold tracking-tight ">
                 {GetHour()}
-            </span>
+            </p>
         )
     }
 

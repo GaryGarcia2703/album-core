@@ -33,9 +33,10 @@ export function Menusidebar() {
 
     <Sidebar className="w-120" aria-label="Default sidebar example">
       <SidebarItems>
-
+        <p>logo</p>
+        
         <SidebarItemGroup>
-          <Saludo></Saludo>
+          <Saludo/>
         </SidebarItemGroup>
 
         <SidebarItemGroup className="space-y-10">
