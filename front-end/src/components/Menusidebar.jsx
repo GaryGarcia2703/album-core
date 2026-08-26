@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import GetAlbums from "../api/GetAlbums";
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from "flowbite-react";
 import { use, useEffect, useState } from "react";
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
+import { FileMusic } from "flowbite-react-icons/outline";
 
 export function Menusidebar() {
 
@@ -39,7 +39,7 @@ export function Menusidebar() {
               key={album.id}
               as={Link}
               to={`/album/${album.id}`}
-              icon={HiTable}
+              icon={FileMusic}
             >
               {album.name}
               <p className="text-xs">{album.artist}</p>
