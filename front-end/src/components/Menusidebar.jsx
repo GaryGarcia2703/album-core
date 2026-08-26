@@ -34,7 +34,7 @@ export function Menusidebar() {
     <Sidebar className="w-120" aria-label="Default sidebar example">
       <SidebarItems>
         <p>logo</p>
-        
+
         <SidebarItemGroup>
           <Saludo/>
         </SidebarItemGroup>
