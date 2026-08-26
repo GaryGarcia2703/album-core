@@ -1,4 +1,5 @@
 "use client";
+import Saludo from "../api/GetHour";
 import { Link } from "react-router-dom";
 import GetAlbums from "../api/GetAlbums";
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from "flowbite-react";
@@ -32,6 +33,11 @@ export function Menusidebar() {
 
     <Sidebar className="w-120" aria-label="Default sidebar example">
       <SidebarItems>
+
+        <SidebarItemGroup>
+          <Saludo></Saludo>
+        </SidebarItemGroup>
+
         <SidebarItemGroup className="space-y-10">
 
           {Albums.map((album) => (
