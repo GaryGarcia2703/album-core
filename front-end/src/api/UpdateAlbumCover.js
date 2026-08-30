@@ -13,3 +13,5 @@ async function UpdateAlbumCover(albumId, coverUrl) {
         return null;
     }
 }
+
+export default UpdateAlbumCover;   

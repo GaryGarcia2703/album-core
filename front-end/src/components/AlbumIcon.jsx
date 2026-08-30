@@ -4,7 +4,7 @@ function AlbumIcon({ coverUrl }) {
     <img
       src={coverUrl}
       alt=""
-      className="w-6 h-6 rounded object-cover"
+      className="w-10 h-10 rounded object-cover"
     />
   );
 }

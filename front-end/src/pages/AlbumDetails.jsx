@@ -5,7 +5,7 @@ import Menusidebar from "../components/Menusidebar";
 import TracksSection from "../components/TracksSection";
 import TestAero from "../components/TestAero";
 import AlbumCover from "../components/AlbumCover";
-
+import SyncAlbumCover from "../components/SyncAlbumCover";
 function AlbumDetails() {
   const { id } = useParams();
   const [album, setAlbum] = useState(null);
@@ -35,6 +35,7 @@ function AlbumDetails() {
 
         <TestAero />
 
+  <SyncAlbumCover album={album} />
         
 
       </section>
