@@ -16,4 +16,5 @@ export const Tracks = sequelize.define("Track", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    
 });

@@ -14,4 +14,6 @@ router.get("/albums", AlbumController.showAlbums)
 
 router.get("/albums/:id", AlbumController.albumInfo)
 
+router.patch("/albums/:id/cover", AlbumController.updateCover)
+
 export default router;

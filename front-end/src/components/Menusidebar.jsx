@@ -3,59 +3,51 @@ import Saludo from "../api/GetHour";
 import { Link } from "react-router-dom";
 import GetAlbums from "../api/GetAlbums";
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from "flowbite-react";
-import { use, useEffect, useState } from "react";
-import { FileMusic } from "flowbite-react-icons/outline";
+import { useEffect, useState } from "react";
+import logo from "../../public/img/music-ico.png";
+import AlbumIcon from "./AlbumIcon";   
 
 export function Menusidebar() {
-
-  const [Albums, setAlbums] = useState([])
+  const [Albums, setAlbums] = useState([]);
 
   useEffect(() => {
     async function cargarlbums() {
       try {
-        const data = await GetAlbums()
-        console.log(data)
-        setAlbums(data)
-
+        const data = await GetAlbums();
+        console.log(data);
+        setAlbums(data);
       } catch (error) {
-        error
+        console.log(error);
       }
     }
 
-    //llamada de la funcion
-    cargarlbums()
-  }, [])
-
-
+    cargarlbums();
+  }, []);
 
   return (
-
-
     <Sidebar className="w-120" aria-label="Default sidebar example">
       <SidebarItems>
-        <p>logo</p>
+        <img src={logo} alt="" className="w-11 h-11" />
 
         <SidebarItemGroup>
-          <Saludo/>
+          <Saludo />
         </SidebarItemGroup>
 
         <SidebarItemGroup className="space-y-10">
-
           {Albums.map((album) => (
             <SidebarItem
               key={album.id}
               as={Link}
               to={`/album/${album.id}`}
-              icon={FileMusic}
+              icon={() => <AlbumIcon coverUrl={album.coverUrl} />}
             >
               {album.name}
               <p className="text-xs">{album.artist}</p>
             </SidebarItem>
           ))}
-
         </SidebarItemGroup>
       </SidebarItems>
     </Sidebar>
   );
 }
-export default Menusidebar
+export default Menusidebar;

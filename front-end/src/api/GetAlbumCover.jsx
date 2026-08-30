@@ -2,30 +2,40 @@ import axios from "axios";
 
 async function GetAlbumCover(albumName, artistName) {
   try {
-    const res = await axios.get(`https://itunes.apple.com/search`, {
+    // Paso 1: buscar el artista para conseguir su ID exacto
+    const artistRes = await axios.get(`https://itunes.apple.com/search`, {
       params: {
-        term: `${artistName} ${albumName}`,
-        entity: "album",
-        limit: 10, // 👈 pedimos varios candidatos, no solo 1
+        term: artistName,
+        entity: "musicArtist",
+        limit: 1,
       },
     });
 
-    const results = res.data.results;
-    if (!results || results.length === 0) return null;
+    const artist = artistRes.data.results[0];
+    if (!artist) return null; // no encontró el artista
 
-    // Buscamos el que coincida EXACTO en nombre de álbum y artista
-    const exactMatch = results.find(
-      (r) =>
-        r.collectionName.toLowerCase() === albumName.toLowerCase() &&
-        r.artistName.toLowerCase() === artistName.toLowerCase()
+    // Paso 2: buscar los álbumes de ESE artista específico
+    const albumsRes = await axios.get(`https://itunes.apple.com/lookup`, {
+      params: {
+        id: artist.artistId,
+        entity: "album",
+      },
+    });
+
+    const albums = albumsRes.data.results;
+
+    // Filtrar por coincidencia exacta de nombre de álbum
+    const exactMatch = albums.find(
+      (a) => a.collectionName?.toLowerCase() === albumName.toLowerCase()
     );
 
-    // Si no hay match exacto, buscamos al menos coincidencia parcial del nombre del álbum
-    const partialMatch = results.find((r) =>
-      r.collectionName.toLowerCase().includes(albumName.toLowerCase())
+    // Si no hay match exacto, buscar coincidencia parcial (por si tiene "(Remastered)" u otro sufijo)
+    const partialMatch = albums.find((a) =>
+      a.collectionName?.toLowerCase().includes(albumName.toLowerCase())
     );
 
-    const chosen = exactMatch || partialMatch || results[0];
+    const chosen = exactMatch || partialMatch;
+    if (!chosen) return null;
 
     return chosen.artworkUrl100.replace("100x100", "600x600");
   } catch (error) {

@@ -11,5 +11,9 @@ export const Album = sequelize.define("Album" , {
     },
     artist: {
         type: DataTypes.STRING,
-    }
+    },
+    coverUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 })
