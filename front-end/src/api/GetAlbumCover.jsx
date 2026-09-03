@@ -37,7 +37,8 @@ async function GetAlbumCover(albumName, artistName) {
     const chosen = exactMatch || partialMatch;
     if (!chosen) return null;
 
-    return chosen.artworkUrl100.replace("100x100", "600x600");
+    console.log(chosen)
+    return chosen.artworkUrl100.replace("100x100", "300x300");
   } catch (error) {
     console.log(error);
     return null;

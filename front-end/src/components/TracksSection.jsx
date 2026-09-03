@@ -34,6 +34,7 @@ function TracksSection() {
                     albumName={album.name}
                     artistName={album.artist}
                 />
+
                 <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
                     {album.name}
                 </h5>

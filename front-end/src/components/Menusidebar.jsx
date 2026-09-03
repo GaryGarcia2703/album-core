@@ -27,7 +27,10 @@ export function Menusidebar() {
   return (
     <Sidebar className="w-120" aria-label="Default sidebar example">
       <SidebarItems>
-        <img src={logo} alt="" className="w-11 h-11" />
+        <div className="flex flex-row items-center gap-8">
+          <img src={logo} alt="" className="w-11 h-11" />
+          <h1 className="font-sans text-xl font-extrabold text-white">AlbumCore</h1>
+        </div>
 
         <SidebarItemGroup>
           <Saludo />
