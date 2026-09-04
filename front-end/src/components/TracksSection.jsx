@@ -4,9 +4,15 @@ import { ListGroup, ListGroupItem, Button, Card } from "flowbite-react";
 import { useParams } from "react-router-dom";
 import { Play } from "flowbite-react-icons/solid";
 import AlbumCover from "./AlbumCover";
+import GetTrack from "../api/GetTrack";
 
 function TracksSection() {
     const { id } = useParams();
+
+    // estado para guardar la url de la musica
+    const [previewUrl, setPreviewUrl] = useState(null)
+
+    // estado para guardar array de musicas
     const [album, setAlbum] = useState(null);
     useEffect(() => {
         GetAlbumDetails(id)
@@ -15,6 +21,14 @@ function TracksSection() {
             .catch((error) => console.error(error));
 
     }, [id]);
+
+    // funcion para enviar datos de artista y nombre de la musica para encotrar la musica
+
+    async function handleTrackClick(trackName, artistName) {
+        const url = await GetTrack(trackName, trackName)
+        console.log(`url de la musica ${url}`)
+        setPreviewUrl(url)
+    }
 
     if (!album) { // rendericacion condicional
         return <p>Cargando información del álbum...</p>; // evita el crash inicial
@@ -50,7 +64,12 @@ function TracksSection() {
                     { /* cargar datos de la tabla tracks atraves de la tabla albums*/}
                     {album.tracks.map((track) => {
                         return (
-                            <ListGroupItem key={track.id} active className="group transition-colors duration-150 hover:bg-neutral-800 hover:scale-[1.01] border-none">
+                            <ListGroupItem
+                                // llamar funcion para obtener la url de la musica
+                                onClick={() => handleTrackClick(track.name, album.artist)}
+                                key={track.id}
+                                active
+                                className="group transition-colors duration-150 hover:bg-neutral-800 hover:scale-[1.01] border-none">
 
                                 <p className="flex items-center gap-10 h-10">
                                     {/* icono que no aparecerá hasta hacer el hover GROUP-HOVER*/}

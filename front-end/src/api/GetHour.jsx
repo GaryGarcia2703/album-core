@@ -1,7 +1,7 @@
 function GetHour() {
     const agora = new Date()
     const hora = agora.getHours()
-    console.log(`shora son ${hora}`)
+    console.log(`ahora son las ${hora}`)
 
     if (hora < 12) {
         return "Bom dia!"
