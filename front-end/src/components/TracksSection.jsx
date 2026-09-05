@@ -25,12 +25,12 @@ function TracksSection() {
     // funcion para enviar datos de artista y nombre de la musica para encotrar la musica
 
     async function handleTrackClick(trackName, artistName) {
-        const url = await GetTrack(trackName, trackName)
+        const url = await GetTrack(trackName, artistName)
         console.log(`url de la musica ${url}`)
         setPreviewUrl(url)
     }
 
-    if (!album) { // rendericacion condicional
+    if (!album) { // rendericacion condicional DESPUES COLOCAR UN COMPONENTE
         return <p>Cargando información del álbum...</p>; // evita el crash inicial
     }
 

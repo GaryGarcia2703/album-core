@@ -4,18 +4,23 @@ import { useRef, useState, useEffect } from "react";
 export function useAudioPlayer(src) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0); // segundos actuales
-  const [duration, setDuration] = useState(0);  // duración total
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !src) return;
 
     const updateProgress = () => setProgress(audio.currentTime);
     const setAudioDuration = () => setDuration(audio.duration);
 
     audio.addEventListener("timeupdate", updateProgress);
     audio.addEventListener("loadedmetadata", setAudioDuration);
+
+    // 👇 NUEVO: cuando cambia src, recargar y reproducir automáticamente
+    audio.load();
+    audio.play();
+    setIsPlaying(true);
 
     return () => {
       audio.removeEventListener("timeupdate", updateProgress);

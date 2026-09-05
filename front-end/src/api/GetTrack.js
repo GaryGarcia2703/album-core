@@ -2,19 +2,7 @@ import axios from "axios";
 
 async function GetTrack(trackName, artistName) {
     try {
-        // paso 1 buscar el artista para conseguir el id
-        const artistId = await axios.get(`https://itunes.apple.com/search`, {
-            params: {
-                term: artistName,
-                entity: "musicArtist",
-                limit: 1,
-            }
-        })
-
-        const artist = artistId.data.results[0];
-        if (!artist) return null; // no encontró el artista
-
-        // paso 2: buscar musica
+        // paso 1: buscar musica
         const TrackUrl = await axios.get(`https://itunes.apple.com/search`, {
             params: {
                 term: `${artistName} ${trackName}`,
@@ -23,19 +11,32 @@ async function GetTrack(trackName, artistName) {
             }
         })
 
-        const results = res.data.results;
+        // no encontro nada
+        const results = TrackUrl.data.results;
         if (!results || results.length === 0) return null;
 
 
+        // filtro para aplicar encima de la musica
         const exactMatch = results.find(
             (r) =>
                 r.trackName?.toLowerCase() === trackName.toLowerCase() &&
                 r.artistName?.toLowerCase() === artistName.toLowerCase()
         );
 
+        // sub-filtro para el artista
+        const partialArtist = results.find((t) =>  
+            t.artistName?.toLowerCase().includes(artistName.toLowerCase())
+        )
 
-        const chosen = exactMatch || results[0];
-        console.log(previewUrl)
+
+        // si no hay match exacto en el track, buscar coincidencia partial  (por si tiene "(Remastered)" u otro sufijo)
+        const partialtrack = results.find((a) => 
+            a.trackName?.toLowerCase().includes(trackName.toLowerCase())
+        )
+
+        // si la musica del filtro es igual a la musica de la busqueda
+        const chosen = exactMatch || partialArtist || partialtrack
+        console.log(chosen)
         return chosen.previewUrl;
 
     } catch (error) {
