@@ -38,7 +38,7 @@ function TracksSection({ onTrackSelect }) {
 
             {/*header album */}
 
-            <Card className="w-100">
+            <Card className="w-200">
 
                 {/*ALBUM COVER */}
                 <AlbumCover
