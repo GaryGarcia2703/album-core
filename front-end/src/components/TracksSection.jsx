@@ -6,11 +6,8 @@ import { Play } from "flowbite-react-icons/solid";
 import AlbumCover from "./AlbumCover";
 import GetTrack from "../api/GetTrack";
 
-function TracksSection() {
+function TracksSection({ onTrackSelect }) {
     const { id } = useParams();
-
-    // estado para guardar la url de la musica
-    const [previewUrl, setPreviewUrl] = useState(null)
 
     // estado para guardar array de musicas
     const [album, setAlbum] = useState(null);
@@ -27,7 +24,7 @@ function TracksSection() {
     async function handleTrackClick(trackName, artistName) {
         const url = await GetTrack(trackName, artistName)
         console.log(`url de la musica ${url}`)
-        setPreviewUrl(url)
+        onTrackSelect({ name: trackName, previewUrl: url });   // ✅ avisa al padre, en vez de guardar local
     }
 
     if (!album) { // rendericacion condicional DESPUES COLOCAR UN COMPONENTE
