@@ -6,6 +6,7 @@
   /* Colores */
   --color-aero-blue: #4FA8E0;
   --color-aero-skyLight: #BEE6FA;
+  --color-aero-blue-dark: #1E5F8C;
   --color-aero-glass: rgba(255, 255, 255, 0.25);
 
   /* Sombras */
@@ -25,6 +26,26 @@
   background-image: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.15) 100%);
 }
 
-.bg-aero-button {
+.bg-aero-button-base {
   background-image: linear-gradient(180deg, #EAF6FF 0%, #9FD3F5 45%, #4FA8E0 55%, #2E86C1 100%);
+}
+
+.bg-aero-button-light {
+  background-image: linear-gradient(180deg, #144C6C 0%, #3694BC 100%);
+}
+
+
+/* Panel general del Player — gradiente sutil, tonos oscuros medios */
+.bg-aero-panel-dark {
+  background-image: linear-gradient(180deg, #294552 0%, #213C49 100%);
+}
+
+/* Botón central de Play — más profundo y con más contraste, como en tu captura */
+.bg-aero-button-dark {
+  background-image: linear-gradient(180deg, #294552 0%, #213C49 100%);
+}
+
+/* Variante con más "brillo" arriba, si querés el efecto glossy más marcado */
+.bg-aero-glass-dark {
+  background-image: linear-gradient(180deg, rgba(54,148,188,0.25) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.15) 100%);
 }

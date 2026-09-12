@@ -17,7 +17,7 @@ export function useAudioPlayer(src) {
     audio.addEventListener("timeupdate", updateProgress);
     audio.addEventListener("loadedmetadata", setAudioDuration);
 
-    // 👇 NUEVO: cuando cambia src, recargar y reproducir automáticamente
+    //  NUEVO: cuando cambia src, recargar y reproducir automáticamente
     audio.load();
     audio.play();
     setIsPlaying(true);

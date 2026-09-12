@@ -32,13 +32,13 @@ function TracksSection({ onTrackSelect }) {
     }
 
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center !bg-aero-panel-dark">
 
 
 
             {/*header album */}
 
-            <Card className="w-200">
+            <Card className="w-200 bg-aero-glass">
 
                 {/*ALBUM COVER */}
                 <AlbumCover
@@ -56,7 +56,7 @@ function TracksSection({ onTrackSelect }) {
 
 
 
-                <ListGroup className="w-100">
+                <ListGroup className="w-140 bg-aero-panel-dark rounded-sm">
 
                     { /* cargar datos de la tabla tracks atraves de la tabla albums*/}
                     {album.tracks.map((track) => {

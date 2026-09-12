@@ -38,8 +38,6 @@ function AlbumDetails() {
           trackName={currentTrack?.name}
         />
 
-        <TestAero />
-
         <SyncAlbumCover album={album} />
       </section>
 
