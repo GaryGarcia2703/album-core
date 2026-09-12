@@ -25,20 +25,21 @@ export function Menusidebar() {
   }, []);
 
   return (
-    <Sidebar className="w-120 max-h-239 overflow-y-auto overflow-x-hidden" aria-label="Default sidebar example">
+    <Sidebar className="w-120" aria-label="Default sidebar example">
+
+      <div className="flex absolute flex-row items-center gap-8">
+        <img src={logo} alt="" className="w-11 h-11 " />
+        <h1 className="font-sans text-xl font-extrabold text-white">AlbumCore</h1>
+      </div>
+
       <SidebarItems>
 
-        <div className="flex absolute flex-row items-center gap-8">
-          <img src={logo} alt="" className="w-11 h-11 " />
-          <h1 className="font-sans text-xl font-extrabold text-white">AlbumCore</h1>
-        </div>
-
-        <section className="mt-20">
+        <section className="mt-10 max-h-180 overflow-y-auto overflow-x-hidden">
           <SidebarItemGroup>
             <Saludo />
           </SidebarItemGroup>
 
-          <SidebarItemGroup className="space-y-10">
+          <SidebarItemGroup className="space-y-5">
             {Albums.map((album) => (
               <SidebarItem
                 key={album.id}
