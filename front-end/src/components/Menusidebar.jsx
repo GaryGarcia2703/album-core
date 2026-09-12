@@ -5,7 +5,7 @@ import GetAlbums from "../api/GetAlbums";
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from "flowbite-react";
 import { useEffect, useState } from "react";
 import logo from "../../public/img/music-ico.png";
-import AlbumIcon from "./AlbumIcon";   
+import AlbumIcon from "./AlbumIcon";
 
 export function Menusidebar() {
   const [Albums, setAlbums] = useState([]);
@@ -25,30 +25,33 @@ export function Menusidebar() {
   }, []);
 
   return (
-    <Sidebar className="w-120" aria-label="Default sidebar example">
+    <Sidebar className="w-120 max-h-239 overflow-y-auto overflow-x-hidden" aria-label="Default sidebar example">
       <SidebarItems>
-        <div className="flex flex-row items-center gap-8">
-          <img src={logo} alt="" className="w-11 h-11" />
+
+        <div className="flex absolute flex-row items-center gap-8">
+          <img src={logo} alt="" className="w-11 h-11 " />
           <h1 className="font-sans text-xl font-extrabold text-white">AlbumCore</h1>
         </div>
 
-        <SidebarItemGroup>
-          <Saludo />
-        </SidebarItemGroup>
+        <section className="mt-20">
+          <SidebarItemGroup>
+            <Saludo />
+          </SidebarItemGroup>
 
-        <SidebarItemGroup className="space-y-10">
-          {Albums.map((album) => (
-            <SidebarItem
-              key={album.id}
-              as={Link}
-              to={`/album/${album.id}`}
-              icon={() => <AlbumIcon coverUrl={album.coverUrl} />}
-            >
-              {album.name}
-              <p className="text-xs">{album.artist}</p>
-            </SidebarItem>
-          ))}
-        </SidebarItemGroup>
+          <SidebarItemGroup className="space-y-10">
+            {Albums.map((album) => (
+              <SidebarItem
+                key={album.id}
+                as={Link}
+                to={`/album/${album.id}`}
+                icon={() => <AlbumIcon coverUrl={album.coverUrl} />}
+              >
+                {album.name}
+                <p className="text-xs">{album.artist}</p>
+              </SidebarItem>
+            ))}
+          </SidebarItemGroup>
+        </section>
       </SidebarItems>
     </Sidebar>
   );

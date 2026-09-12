@@ -8,8 +8,6 @@ function Home() {
   return (
     <div>
       <Menusidebar/>
-      <Player></Player>
-      
     </div>
     
   )

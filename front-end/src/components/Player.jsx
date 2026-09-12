@@ -6,10 +6,10 @@ import { Shuffle, ArrowsRepeat } from "flowbite-react-icons/outline";
 function Player({ src, trackName }) {
   const { audioRef, isPlaying, progress, duration, togglePlay, seek, } = useAudioPlayer(src);
 
-  // if (!src) return null; // no muestra nada hasta que haya un track seleccionado
+  if (!src) return null; // no muestra nada hasta que haya un track seleccionado
 
   return (
-    <div className="flex  rounded-aero shadow-aero-glow p-4 w-150">
+    <div className="flex rounded-aero shadow-aero-glow p-4 w-full">
       <audio ref={audioRef} src={src} />
 
       <section id="column" className="flex flex-col w-full">
@@ -18,7 +18,7 @@ function Player({ src, trackName }) {
 
         <div className="flex gap-2 items-center  justify-center mt-2 group-hover:">
 
-          <button className="group bg-aero-button-light shadow-aero-glow rounded-l-lg w-10 h-10 flex items-center justify-center ">
+          <button className="group bg-aero-button-dark shadow-aero-glow rounded-l-lg w-10 h-10 flex items-center justify-center ">
             <Shuffle className="text-aero-blue transition-colors group-hover:text-white"></Shuffle>
           </button>
 
@@ -38,7 +38,7 @@ function Player({ src, trackName }) {
             <ForwardStep className="text-aero-blue transition-colors group-hover:text-white"></ForwardStep>
           </button>
 
-          <button className="group bg-aero-button-light shadow-aero-glow rounded-r-lg w-10 h-10 flex items-center justify-center">
+          <button className="group bg-aero-button-dark shadow-aero-glow rounded-r-lg w-10 h-10 flex items-center justify-center">
             <ArrowsRepeat className="text-aero-blue transition-colors group-hover:text-white"></ArrowsRepeat>
           </button>
          

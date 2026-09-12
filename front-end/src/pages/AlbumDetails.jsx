@@ -28,7 +28,7 @@ function AlbumDetails() {
 
       <Menusidebar />
 
-      <section id="album-plus-tracks-section" className="flex flex-col w-100 gap-1">
+      <section id="album-plus-tracks-section" className="flex flex-col w-150 gap-1">
         <TracksSection
           onTrackSelect={setCurrentTrack} // TracksSection avisa cuál track se eligió
         />
