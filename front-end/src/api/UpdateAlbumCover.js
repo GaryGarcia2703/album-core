@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/"
+import API_URL from "./Config"
 
 async function UpdateAlbumCover(albumId, coverUrl) {
       try {
-        const res = await axios.patch(`${API_URL}albums/${albumId}/cover`, {
+        const res = await axios.patch(`${API_URL}/albums/${albumId}/cover`, {
             coverUrl,
         });
         return res.data;

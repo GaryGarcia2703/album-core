@@ -1,5 +1,5 @@
 import axios from "axios"
-const API_URL = "http://localhost:3000/api"
+import API_URL from "./Config"
 
 async function GetAlbumDetails(id) {
     try {
