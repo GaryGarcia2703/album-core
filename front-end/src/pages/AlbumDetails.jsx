@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Menusidebar from "../components/Menusidebar";
 import TracksSection from "../components/TracksSection";
-import TestAero from "../components/TestAero";
 import Player from "../components/Player";
 import SyncAlbumCover from "../components/SyncAlbumCover";
 function AlbumDetails() {
@@ -34,8 +33,10 @@ function AlbumDetails() {
         />
 
         <Player
+          artist={album?.artist}
           src={currentTrack?.previewUrl}
           trackName={currentTrack?.name}
+          coverUrl={album?.coverUrl}   
         />
 
         <SyncAlbumCover album={album} />
