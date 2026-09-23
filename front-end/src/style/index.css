@@ -2,6 +2,12 @@
 @import "flowbite/dist/flowbite.css";
 @source "../node_modules/flowbite-react";
 
+@utility bg-mountain {
+  background-image: url('../../public/img/mountain.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 @theme {
   /* Colores */
   --color-aero-blue: #4FA8E0;

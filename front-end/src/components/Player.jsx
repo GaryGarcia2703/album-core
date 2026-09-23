@@ -28,7 +28,7 @@ function Player({ src, trackName, coverUrl, artist  }) { // recibe la url de la 
   if (!src) return null; // no muestra nada hasta que haya un track seleccionado
 
   return (
-    <div className="flex rounded-aero shadow-aero-glow p-4 w-full bg-aero-button-dark">
+    <div className="flex rounded-aero shadow-aero-glow p-4 w-full bg-aero-button-dark opacity-95">
       <audio ref={audioRef} src={src} />
 
       <section id="column" className="flex flex-col w-full">

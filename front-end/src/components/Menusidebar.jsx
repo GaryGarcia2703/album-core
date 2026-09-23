@@ -25,7 +25,7 @@ export function Menusidebar() {
   }, []);
 
   return (
-    <Sidebar className="w-120 rounded-t-none!" aria-label="Default sidebar example">
+    <Sidebar className="w-120 rounded-t-none! opacity-90" aria-label="Default sidebar example">
 
       <div className="flex absolute flex-row items-center gap-8 ">
         <img src={logo} alt="" className="w-11 h-11 " />
@@ -34,7 +34,7 @@ export function Menusidebar() {
 
       <SidebarItems className="rounded-b-lg!">
 
-        <section className="mt-10 max-h-180 overflow-y-auto overflow-x-hidden rounded-b-lg!">
+        <section className="mt-15 max-h-180 overflow-y-auto overflow-x-hidden rounded-b-lg!">
           <SidebarItemGroup>
             <Saludo />
           </SidebarItemGroup>

@@ -23,9 +23,9 @@ function AlbumDetails() {
   }
 
   return (
-    <div className="flex flex-row gap-50">
+    <div className="flex flex-row gap-50 bg-mountain min-h-screen w-full ">
 
-      <Menusidebar />
+      <Menusidebar  />
 
       <section id="album-plus-tracks-section" className="flex flex-col w-150 gap-1">
         <TracksSection

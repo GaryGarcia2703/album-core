@@ -32,7 +32,7 @@ function TracksSection({ onTrackSelect }) {
     }
 
     return (
-        <div className="flex justify-center !bg-aero-panel-dark">
+        <div className="flex justify-center !bg-aero-panel-dark opacity-95">
 
 
 
