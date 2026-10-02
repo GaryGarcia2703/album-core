@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Menusidebar from "../components/Menusidebar";
 import TracksSection from "../components/TracksSection";
-import TestAero from "../components/TestAero";
 import Player from "../components/Player";
 import SyncAlbumCover from "../components/SyncAlbumCover";
 function AlbumDetails() {
@@ -24,9 +23,9 @@ function AlbumDetails() {
   }
 
   return (
-    <div className="flex flex-row gap-50">
+    <div className="flex flex-row gap-50 bg-mountain min-h-screen w-full ">
 
-      <Menusidebar />
+      <Menusidebar  />
 
       <section id="album-plus-tracks-section" className="flex flex-col w-150 gap-1">
         <TracksSection
@@ -34,8 +33,10 @@ function AlbumDetails() {
         />
 
         <Player
+          artist={currentTrack?.artist}
           src={currentTrack?.previewUrl}
           trackName={currentTrack?.name}
+          coverUrl={currentTrack?.cover}   
         />
 
         <SyncAlbumCover album={album} />

@@ -1,22 +1,29 @@
 import { useState } from 'react'
 import Home from './pages/Home'
 import AlbumDetails from './pages/AlbumDetails'
+import Player from './components/Player'
 
-{ /* importacion para usar react-routes */}
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 
 function App() {
+  const [currentTrack, setCurrentTrack] = useState(null);
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home />}>
-        </Route>
-        
-        <Route path='/album/:id' element={<AlbumDetails />}>
-
-        </Route>
+        <Route path='/' element={<Home />} />
+        <Route
+          path='/album/:id'
+          element={<AlbumDetails onTrackSelect={setCurrentTrack} />}
+        />
       </Routes>
+
+      <Player
+        src={currentTrack?.previewUrl}
+        trackName={currentTrack?.name}
+        coverUrl={currentTrack?.coverUrl}
+        artist={currentTrack?.artist}
+      />
     </>
   )
 }

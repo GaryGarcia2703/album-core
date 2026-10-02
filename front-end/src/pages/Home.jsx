@@ -5,7 +5,7 @@ import Player from "../components/Player";
 
 function Home() {
   return (
-    <div>
+    <div className="bg-mountain min-h-screen w-full ">
       <Menusidebar/>
     </div>
     
