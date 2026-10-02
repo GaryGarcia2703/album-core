@@ -21,10 +21,13 @@ function TracksSection({ onTrackSelect }) {
 
     // funcion para enviar datos de artista y nombre de la musica para encotrar la musica
 
-    async function handleTrackClick(trackName, artistName) {
+    async function handleTrackClick(trackName, artistName, coverUrl,) {
+        // conseguir los 30 segundo de la musica
         const url = await GetTrack(trackName, artistName)
         console.log(`url de la musica ${url}`)
-        onTrackSelect({ name: trackName, previewUrl: url });   // ✅ avisa al padre, en vez de guardar local
+
+        // pasar props para albums details
+        onTrackSelect({ name: trackName, previewUrl: url , cover: coverUrl, artist: artistName});   // ✅ avisa al padre, en vez de guardar local
     }
 
     if (!album) { // rendericacion condicional DESPUES COLOCAR UN COMPONENTE
@@ -43,8 +46,10 @@ function TracksSection({ onTrackSelect }) {
                 {/*ALBUM COVER */}
                 <AlbumCover
                     albumName={album.name}
-                    artistName={album.artist}
+                    artistName={album.artist} 
                 />
+
+                
 
                 <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
                     {album.name}
@@ -63,7 +68,8 @@ function TracksSection({ onTrackSelect }) {
                         return (
                             <ListGroupItem
                                 // llamar funcion para obtener la url de la musica
-                                onClick={() => handleTrackClick(track.name, album.artist)}
+                                // problema (AGARRA EL ARTISTA DE QUALQUIER ALBUM NO DE  LA MUSICA)
+                                onClick={() => handleTrackClick(track.name, album.artist , album.coverUrl)}
                                 key={track.id}
                                 active
                                 className="group transition-colors duration-150 hover:bg-aero-glass hover:scale-[1.01] border-none">

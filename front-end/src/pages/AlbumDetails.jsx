@@ -33,10 +33,10 @@ function AlbumDetails() {
         />
 
         <Player
-          artist={album?.artist}
+          artist={currentTrack?.artist}
           src={currentTrack?.previewUrl}
           trackName={currentTrack?.name}
-          coverUrl={album?.coverUrl}   
+          coverUrl={currentTrack?.cover}   
         />
 
         <SyncAlbumCover album={album} />
