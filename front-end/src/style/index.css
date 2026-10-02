@@ -9,34 +9,28 @@
 }
 
 @theme {
-  /* Colores */
   --color-aero-blue: #4FA8E0;
   --color-aero-skyLight: #BEE6FA;
   --color-aero-blue-dark: #1E5F8C;
   --color-aero-glass: rgba(255, 255, 255, 0.25);
-
-  /* Sombras */
   --shadow-aero-glow: 0 0 12px rgba(79, 168, 224, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   --shadow-aero-inset: inset 0 1px 2px rgba(255, 255, 255, 0.7), inset 0 -1px 2px rgba(0, 0, 0, 0.1);
-
-  /* Bordes redondeados */
   --radius-aero: 14px;
 }
 
-/* Gradientes (como CSS plano, ya que v4 no tiene atajo directo para gradientes multi-parada en @theme) */
-.bg-aero-panel {
+@utility bg-aero-panel {
   background-image: linear-gradient(180deg, #E8F6FF 0%, #C9E9FA 100%);
 }
 
-.bg-aero-glass {
+@utility bg-aero-glass {
   background-image: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.15) 100%);
 }
 
-.bg-aero-button-base {
+@utility bg-aero-button-base {
   background-image: linear-gradient(180deg, #EAF6FF 0%, #9FD3F5 55%, #4FA8E0 45%, #2E86C1 100%);
 }
 
-.bg-aero-button-light {
+@utility bg-aero-button-light {
   background-image: linear-gradient(
     195deg,
     rgba(255, 255, 255, 0.5) 0%,
@@ -45,17 +39,14 @@
   );
 }
 
-/* Panel general del Player — gradiente sutil, tonos oscuros medios */
-.bg-aero-panel-dark {
+@utility bg-aero-panel-dark {
   background-image: linear-gradient(180deg, #294552 0%, #213C49 100%);
 }
 
-/* Botón central de Play — más profundo y con más contraste, como en tu captura */
-.bg-aero-button-dark {
+@utility bg-aero-button-dark {
   background-image: linear-gradient(180deg, #294552 0%, #213C49 100%);
 }
 
-/* Variante con más "brillo" arriba, si querés el efecto glossy más marcado */
-.bg-aero-glass-dark {
+@utility bg-aero-glass-dark {
   background-image: linear-gradient(180deg, rgba(54,148,188,0.25) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.15) 100%);
 }

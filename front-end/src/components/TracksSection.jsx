@@ -66,7 +66,7 @@ function TracksSection({ onTrackSelect }) {
                                 onClick={() => handleTrackClick(track.name, album.artist)}
                                 key={track.id}
                                 active
-                                className="group transition-colors duration-150 hover:bg-neutral-800 hover:scale-[1.01] border-none">
+                                className="group transition-colors duration-150 hover:bg-aero-glass hover:scale-[1.01] border-none">
 
                                 <p className="flex items-center gap-10 h-10">
                                     {/* icono que no aparecerá hasta hacer el hover GROUP-HOVER*/}
