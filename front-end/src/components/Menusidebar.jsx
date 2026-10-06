@@ -42,8 +42,8 @@ export function Menusidebar() {
           </SidebarItemGroup>
 
           <SidebarItemGroup className="space-y-5">
-            {Albums.map((album) => (
-              
+            {Albums?.map((album) => (
+
               <SidebarItem
                 key={album.id}
                 as={Link}
@@ -54,6 +54,7 @@ export function Menusidebar() {
                 <p className="text-xs">{album.artist}</p>
               </SidebarItem>
             ))}
+            
           </SidebarItemGroup>
         </section>
       </SidebarItems>
