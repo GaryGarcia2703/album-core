@@ -16,24 +16,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(
-  cors({
-    origin: "*", // Al estar en el mismo servidor/dominio, ya no hay problemas de CORS
-    credentials: true,
-  })
-);
+// ✅ Al estar servido en el mismo puerto, cors() por defecto permite todas las peticiones
+app.use(cors());
 app.use(express.json());
 
 // 1. Rutas de la API (DEBEN ir primero)
 app.use("/api", AlbumRoutes);
 
 // 2. Servir los archivos estáticos generados por el build de React (Vite)
-// Asumiendo la estructura: raíz/ -> front-end/ y backend/
 const frontendDistPath = path.join(__dirname, "../front-end/dist");
 app.use(express.static(frontendDistPath));
 
 // 3. Cualquier otra ruta que NO sea /api, devuelve el index.html de React
-app.get("*", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(frontendDistPath, "index.html"));
 });
 
