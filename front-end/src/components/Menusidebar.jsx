@@ -11,7 +11,7 @@ export function Menusidebar() {
   const [Albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    async function cargarlbums() {
+    async function cargarAlbums() {
       try {
         const data = await GetAlbums();
         console.log(data);
@@ -21,8 +21,10 @@ export function Menusidebar() {
       }
     }
 
-    cargarlbums();
+    cargarAlbums();
   }, []);
+
+  console.log("Albums justo antes de renderizar:", Albums, Array.isArray(Albums)); // 👈 diagnóstico
 
   return (
     <Sidebar className="w-120 rounded-t-none! opacity-90" aria-label="Default sidebar example">
@@ -41,6 +43,7 @@ export function Menusidebar() {
 
           <SidebarItemGroup className="space-y-5">
             {Albums.map((album) => (
+              
               <SidebarItem
                 key={album.id}
                 as={Link}
