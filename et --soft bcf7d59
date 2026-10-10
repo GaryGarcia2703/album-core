@@ -1,0 +1,28 @@
+[33md37aff4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m update ontrackselect
+[33m7017ea6[m style_upd
+[33m289e43d[m bg update
+[33mbcf7d59[m upd
+[33mebb7f70[m Update package.json
+[33m50a8e2c[m Update Menusidebar.jsx
+[33m24a16c6[m layout update
+[33m09afe8c[m implementación de nuevva paleta de colocres para el player con estetica aero
+[33me61e56a[m update card height from tracksection
+[33m167f675[m adicion de player aero
+[33mdf5b8be[m correción de filtro para obtener url de musicas
+[33m1a0723e[m adicion de función que obtiene datos de la musica para hacer get de una muestra de la musica
+[33mf849303[m solución a problema de capa que no cargaba y adición de logo
+[33ma2715d2[m Upd_patch AlbumcoverUrl
+[33m3114d68[m creando ruta patch para guardar url de capas de albums
+[33md1139e9[m mejora en el filtro de busqueda
+[33m202943a[m Implementacion de api para esncontrar capa de albunes
+[33mefd9590[m creacion de componente "player"
+[33m5d622d4[m saludo upd
+[33m2471fb3[m adicion de una dicion de saludar al user segun el horario
+[33mad5cb40[m Update, hover con icono de "play" en todos los componente de tracks
+[33m6f1584c[m Adicion de lista de musicas al componente de album, creando la seccion de musica junto con el header del album
+[33m38e3c7b[m creacion de la tabla "tracks" con fk para associancion con la tabla "albums"
+[33mcc9ccff[m fix: corrige bugs de integración en listado y detalle de álbumes
+[33m64140ec[m Añade estructura base y navegación con React Router
+[33m22ad409[m update de albuns
+[33m788db6d[m upt_1
+[33m98b7811[m Initial commit
