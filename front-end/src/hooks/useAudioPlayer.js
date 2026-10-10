@@ -1,5 +1,6 @@
 // hooks/useAudioPlayer.js
 import { useRef, useState, useEffect } from "react";
+import TracksSection from "../components/TracksSection";
 
 export function useAudioPlayer(src) {
   const audioRef = useRef(null);
@@ -7,8 +8,11 @@ export function useAudioPlayer(src) {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
 
+  TracksSection()
+
   useEffect(() => {
     const audio = audioRef.current;
+    console.log(audioRef)
     if (!audio || !src) return;
 
     const updateProgress = () => setProgress(audio.currentTime);
@@ -27,6 +31,17 @@ export function useAudioPlayer(src) {
       audio.removeEventListener("loadedmetadata", setAudioDuration);
     };
   }, [src]);
+
+  
+
+  const [tracks, setTracks] = useState([]);        // lista de canciones
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextTrack = () => setCurrentIndex((i) => (i + 1) % tracks.length);
+  const prevTrack = () => setCurrentIndex((i) => (i - 1 + tracks.length) % tracks.length);
+
+  const current = tracks[currentIndex];
+  
 
   const togglePlay = () => {
     const audio = audioRef.current;

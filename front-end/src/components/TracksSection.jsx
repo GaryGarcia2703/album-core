@@ -16,23 +16,31 @@ function TracksSection({ onTrackSelect }) {
             .then((data) => setAlbum(data))
 
             .catch((error) => console.error(error));
-
+ 
     }, [id]);
+
+    // logear para ver el array de los tracks
 
     // funcion para enviar datos de artista y nombre de la musica para encotrar la musica
 
-    async function handleTrackClick(trackName, artistName, coverUrl,) {
+    async function handleTrackClick(trackName, artistName, coverUrl) {
         // conseguir los 30 segundo de la musica
         const url = await GetTrack(trackName, artistName)
         console.log(`url de la musica ${url}`)
 
         // pasar props para albums details
-        onTrackSelect({ name: trackName, previewUrl: url , cover: coverUrl, artist: artistName});   // ✅ avisa al padre, en vez de guardar local
+        onTrackSelect({ name: trackName, previewUrl: url , cover: coverUrl, artist: artistName});   
+        // passar la lista de tracks
+        // ActualTracksArray({ albumId: album})
     }
+
+   
 
     if (!album) { // rendericacion condicional DESPUES COLOCAR UN COMPONENTE
         return <p>Cargando información del álbum...</p>; // evita el crash inicial
     }
+
+    const tracksList = Array.isArray(album.tracks) ? album.tracks : [];
 
     return (
         <div className="flex justify-center !bg-aero-panel-dark opacity-95">
@@ -68,8 +76,7 @@ function TracksSection({ onTrackSelect }) {
                         return (
                             <ListGroupItem
                                 // llamar funcion para obtener la url de la musica
-                                // problema (AGARRA EL ARTISTA DE QUALQUIER ALBUM NO DE  LA MUSICA)
-                                onClick={() => handleTrackClick(track.name, album.artist , album.coverUrl)}
+                                onClick={() => handleTrackClick(track.name, album.artist , album.coverUrl,)}
                                 key={track.id}
                                 active
                                 className="group transition-colors duration-150 hover:bg-aero-glass hover:scale-[1.01] border-none">
