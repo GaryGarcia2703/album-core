@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Menusidebar from "../components/Menusidebar";
 import TracksSection from "../components/TracksSection";
-import Player from "../components/Player";
 import SyncAlbumCover from "../components/SyncAlbumCover";
-function AlbumDetails() {
-  const [currentTrack, setCurrentTrack] = useState(null);
+import Player from "../components/Player";
+function AlbumDetails( {onTrackSelect} ) {
   const { id } = useParams();
   const [album, setAlbum] = useState(null);
 
@@ -28,19 +27,12 @@ function AlbumDetails() {
       <Menusidebar  />
 
       <section id="album-plus-tracks-section" className="flex flex-col w-150 gap-1">
-        <TracksSection
-          onTrackSelect={setCurrentTrack} // TracksSection avisa cuál track se eligió
-        />
 
-        <Player
-          artist={currentTrack?.artist}
-          src={currentTrack?.previewUrl}
-          trackName={currentTrack?.name}
-          coverUrl={currentTrack?.cover}   
-        />
+        <TracksSection onTrackSelect={onTrackSelect} />
 
         <SyncAlbumCover album={album} />
       </section>
+
 
     </div>
   );

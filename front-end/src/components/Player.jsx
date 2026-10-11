@@ -5,7 +5,7 @@ import GetAlbums from "../api/GetAlbums";
 import { useState, useEffect } from "react";
 import { Shuffle, ArrowsRepeat } from "flowbite-react-icons/outline";
 
-function Player({ src, trackName, coverUrl, artist, onNext, onPrevious }) {
+function Player({ src, trackName, coverUrl, artist, onNext, onPrev }) {
   const [Albums, setAlbums] = useState([]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function Player({ src, trackName, coverUrl, artist, onNext, onPrevious }) {
             </button>
 
             <button 
-              onClick={onPrevious}
+              onClick={onPrev}
               className="group bg-aero-button-light shadow-aero-glow rounded-l-lg w-15 h-15 flex items-center justify-center"
             >
               <BackwardStep className="text-aero-blue transition-colors group-hover:text-white" />
