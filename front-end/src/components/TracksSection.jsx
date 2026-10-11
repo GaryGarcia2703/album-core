@@ -7,6 +7,7 @@ import AlbumCover from "./AlbumCover";
 import GetTrack from "../api/GetTrack";
 
 function TracksSection({ onTrackSelect }) {
+    console.log("onTrackSelect es:", typeof onTrackSelect)
     const { id } = useParams();
 
     // estado para guardar array de musicas
@@ -16,31 +17,46 @@ function TracksSection({ onTrackSelect }) {
             .then((data) => setAlbum(data))
 
             .catch((error) => console.error(error));
- 
+
     }, [id]);
 
     // logear para ver el array de los tracks
 
     // funcion para enviar datos de artista y nombre de la musica para encotrar la musica
 
-    async function handleTrackClick(trackName, artistName, coverUrl) {
+    // track.name, album.artist, album.coverUrl, track.trackNumber, album.tracks
+    async function handleTrackClick(trackName, artistName, coverUrl, actualTrack, Tracklist ) {
         // conseguir los 30 segundo de la musica
         const url = await GetTrack(trackName, artistName)
         console.log(`url de la musica ${url}`)
 
+
         // pasar props para albums details
-        onTrackSelect({ name: trackName, previewUrl: url , cover: coverUrl, artist: artistName});   
-        // passar la lista de tracks
-        // ActualTracksArray({ albumId: album})
+        onTrackSelect({ 
+            name: trackName,
+            previewUrl: url, 
+            artist: artistName, 
+            cover: coverUrl, 
+            actualTrack: actualTrack, 
+            Tracklist: album.tracks 
+        });
+
+
     }
 
-   
+
+    // crear animacio para el track que esta siendo predozudo 
+    // 1 tomar el track.trackname y ver si es igual al trackname que esta en el player
+    // O tomar el track.tracknumber este tambien tomando el album y compararlo con el album y el trackNumber del player 
+    // esto en otro archivio
+    // si es correcto mostrar un color diferente a inicio
+    // si no tiene que recorrer a otro pero me imagino que no es nesesario
+
+
 
     if (!album) { // rendericacion condicional DESPUES COLOCAR UN COMPONENTE
         return <p>Cargando información del álbum...</p>; // evita el crash inicial
     }
-
-    const tracksList = Array.isArray(album.tracks) ? album.tracks : [];
 
     return (
         <div className="flex justify-center !bg-aero-panel-dark opacity-95">
@@ -54,10 +70,10 @@ function TracksSection({ onTrackSelect }) {
                 {/*ALBUM COVER */}
                 <AlbumCover
                     albumName={album.name}
-                    artistName={album.artist} 
+                    artistName={album.artist}
                 />
 
-                
+
 
                 <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
                     {album.name}
@@ -76,7 +92,13 @@ function TracksSection({ onTrackSelect }) {
                         return (
                             <ListGroupItem
                                 // llamar funcion para obtener la url de la musica
-                                onClick={() => handleTrackClick(track.name, album.artist , album.coverUrl,)}
+                                onClick={() => {
+                                    handleTrackClick(track.name, album.artist, album.coverUrl, track.trackNumber, album.tracks);
+
+                                   // console.log("ID DEL TRACK ACTUAL " + track.trackNumber)
+                                   // console.log("LISTA DE TRACKS " , album.tracks)
+                                }}
+
                                 key={track.id}
                                 active
                                 className="group transition-colors duration-150 hover:bg-aero-glass hover:scale-[1.01] border-none">

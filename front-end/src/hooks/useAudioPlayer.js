@@ -8,7 +8,6 @@ export function useAudioPlayer(src) {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  TracksSection()
 
   useEffect(() => {
     const audio = audioRef.current;
