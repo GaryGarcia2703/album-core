@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom';
 import Menusidebar from "../components/Menusidebar";
 import TracksSection from "../components/TracksSection";
 import SyncAlbumCover from "../components/SyncAlbumCover";
-import Player from "../components/Player";
-function AlbumDetails( {onTrackSelect} ) {
+function AlbumDetails( {onTrackSelect, player} ) {
   const { id } = useParams();
   const [album, setAlbum] = useState(null);
 
@@ -30,8 +29,13 @@ function AlbumDetails( {onTrackSelect} ) {
 
         <TracksSection onTrackSelect={onTrackSelect} />
 
+        {/*elemento player fue pasado como prop con todas sus props */}
+        {player}
+
         <SyncAlbumCover album={album} />
       </section>
+
+      
 
 
     </div>
