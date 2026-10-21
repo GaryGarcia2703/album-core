@@ -20,20 +20,29 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route
           path='/album/:id'
-          element={<AlbumDetails onTrackSelect={setCurrentTrack} />}
+          element={
+            <AlbumDetails
+            
+              onTrackSelect={setCurrentTrack}
+
+              player={
+                <Player
+                  trackName={currentTrack?.name}
+                  artist={currentTrack?.artist}
+                  coverUrl={currentTrack?.cover}
+                  src={currentTrack?.previewUrl}
+                  onNext={() => skip(1)}
+                  onPrev={() => skip(-1)}
+                />
+              }
+            />
+          }
         />
       </Routes>
 
-      <Player
-        trackName={currentTrack?.name}
-        artist={currentTrack?.artist}
-        coverUrl={currentTrack?.coverUrl}
-        src={currentTrack?.previewUrl}
-        onNext={() => skip(1)}
-        onPrev={() => skip(-1)}
-      />
     </>
   )
 }
