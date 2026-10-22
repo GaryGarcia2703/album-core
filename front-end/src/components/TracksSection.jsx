@@ -7,7 +7,6 @@ import AlbumCover from "./AlbumCover";
 import GetTrack from "../api/GetTrack";
 
 function TracksSection({ onTrackSelect }) {
-    console.log("onTrackSelect es:", typeof onTrackSelect)
     const { id } = useParams();
 
     // estado para guardar array de musicas
