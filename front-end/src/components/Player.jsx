@@ -5,8 +5,10 @@ import GetAlbums from "../api/GetAlbums";
 import { useState, useEffect } from "react";
 import { Shuffle, ArrowsRepeat } from "flowbite-react-icons/outline";
 
-function Player({ src, trackName, coverUrl, artist, onNext, onPrev }) {
+function Player({ src, trackName, coverUrl, artist, onNext, onPrev, onShuffle }) {
   const [Albums, setAlbums] = useState([]);
+
+  const [isonshuffle, setIsonshuffle] = useState(false)
 
   useEffect(() => {
     async function cargarAlbums() {
@@ -44,11 +46,20 @@ function Player({ src, trackName, coverUrl, artist, onNext, onPrev }) {
 
         <div id="inputs" className="flex flex-col">
           <div className="flex gap-2 items-center justify-center mt-2">
-            <button className="group bg-aero-button-dark shadow-aero-glow rounded-l-lg w-10 h-10 flex items-center justify-center">
-              <Shuffle className="text-aero-blue transition-colors group-hover:text-white" />
-            </button>
 
             <button 
+              onClick={() => {
+                const next = !isonshuffle
+                setIsonshuffle(next)
+                onShuffle(next ? "on" : "off")
+              }}
+
+              className="group bg-aero-button-dark shadow-aero-glow rounded-l-lg w-10 h-10 flex items-center justify-center">
+              <Shuffle className="text-aero-blue transition-colors group-hover:text-white" />
+               {isonshuffle ? "on" : "off"}
+            </button>
+
+            <button
               onClick={onPrev}
               className="group bg-aero-button-light shadow-aero-glow rounded-l-lg w-15 h-15 flex items-center justify-center"
             >
@@ -66,7 +77,7 @@ function Player({ src, trackName, coverUrl, artist, onNext, onPrev }) {
               )}
             </button>
 
-            <button 
+            <button
               onClick={onNext}
               className="group bg-aero-button-light shadow-aero-glow rounded-r-lg w-15 h-15 flex items-center justify-center"
             >
