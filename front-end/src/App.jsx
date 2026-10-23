@@ -24,9 +24,12 @@ function App() {
   const shuffle = (mode) => {
     // si el shuffle esta en modod off este para la funcion
     if (mode === "off") return
+
     if (!currentTrack) return
+
     const { Tracklist, actualTrack } = currentTrack
     const current = Tracklist.find(t => t.trackNumber === actualTrack)
+    console.log("este el track actual:" + current)
     const rest = Tracklist.filter(t => t !== current).sort(() => Math.random() - 0.5)
     setCurrentTrack({ ...currentTrack, Tracklist: [current, ...rest] })
 
