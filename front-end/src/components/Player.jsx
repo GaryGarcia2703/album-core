@@ -2,7 +2,7 @@
 import { useAudioPlayer } from "../hooks/useAudioPlayer";
 import { Play, Pause, BackwardStep, ForwardStep } from "flowbite-react-icons/solid";
 import GetAlbums from "../api/GetAlbums";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef  } from "react";
 import { Shuffle, ArrowsRepeat } from "flowbite-react-icons/outline";
 
 function Player({ src, trackName, coverUrl, artist, onNext, onPrev, onShuffle }) {
@@ -26,6 +26,15 @@ function Player({ src, trackName, coverUrl, artist, onNext, onPrev, onShuffle })
 
   const { audioRef, isPlaying, progress, duration, togglePlay, seek } = useAudioPlayer(src);
 
+  const titleRef = useRef(null)
+  const [shift, setShift] = useState(0)
+
+  useEffect(() => {
+    const el = titleRef.current
+    setShift(el ? Math.max(0, el.scrollWidth - el.parentElement.clientWidth) : 0)
+  }, [trackName])
+
+
   if (!src) return null; // no muestra nada hasta que haya un track seleccionado
 
   return (
@@ -38,16 +47,23 @@ function Player({ src, trackName, coverUrl, artist, onNext, onPrev, onShuffle })
             <img src={coverUrl} alt={trackName || "Cover"} className="rounded-xl object-cover h-full w-full" />
           </div>
 
-          <div>
-            <p className="text-white font-bold">{trackName}</p>
-            <p className="text-white font-light">{artist}</p>
+          <div className="w-48 shrink-0 overflow-hidden">
+            <p
+              ref={titleRef}
+              style={{ "--shift": `-${shift}px` }}
+              className={`text-white font-bold whitespace-nowrap inline-block ${shift > 0 ? "animate-marquee" : ""}`}
+            >
+              {trackName}
+            </p>
+            <p className="text-white font-light truncate">{artist}</p>
           </div>
+
         </section>
 
         <div id="inputs" className="flex flex-col">
           <div className="flex gap-2 items-center justify-center mt-2">
 
-            <button 
+            <button
               onClick={() => {
                 const next = !isonshuffle
                 setIsonshuffle(next)
@@ -55,8 +71,10 @@ function Player({ src, trackName, coverUrl, artist, onNext, onPrev, onShuffle })
               }}
 
               className="group bg-aero-button-dark shadow-aero-glow rounded-l-lg w-10 h-10 flex items-center justify-center">
-              <Shuffle className="text-aero-blue transition-colors group-hover:text-white" />
-               {isonshuffle ? "on" : "off"}
+              <Shuffle
+                className={`transition-colors group-hover:text-white ${isonshuffle ? "text-white" : "text-aero-blue"}`}
+              />
+
             </button>
 
             <button
