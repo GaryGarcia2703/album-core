@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 // ✅ Al estar servido en el mismo puerto, cors() por defecto permite todas las peticiones
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
 // 1. Rutas de la API (DEBEN ir primero)
