@@ -10,10 +10,15 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
+  },
   build: {
     // 1. Eleva el límite de advertencia a 1000 kB (1 MB)
     chunkSizeWarningLimit: 1000,
-    
+
     // 2. Separa las librerías de node_modules en un chunk 'vendor' independiente
     rollupOptions: {
       output: {
